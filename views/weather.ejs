@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: orange;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: darkred;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    a {
+      display: block;
+      margin-top: 15px;
+      color: purple;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🌤 Weather App</h2>
+    <form action="/weather" method="POST">
+      <input type="text" name="city" placeholder="Enter city (e.g., Chennai)" required>
+      <button type="submit">Get Weather</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (weather) { %>
+      <div class="result">
+        <p><strong>City:</strong> <%= weather.city %></p>
+        <p><strong>Temperature:</strong> <%= weather.temperature %> °C</p>
+        <p><strong>Condition:</strong> <%= weather.condition %></p>
+      </div>
+    <% } %>
+
+    <a href="/dashboard">← Back to Dashboard</a>
+  </div>
+</body>
+</html>

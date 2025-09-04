@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cache Results</title>
+  <style>
+    body { font-family: Arial; background: #fff7e6; text-align: center; padding: 30px; }
+    table { margin: auto; border-collapse: collapse; width: 60%; }
+    th, td { border: 1px solid #333; padding: 10px; }
+    th { background: #ffa; }
+  </style>
+</head>
+<body>
+  <h2>⚡ Cached Weather Results</h2>
+  <table>
+    <tr>
+      <th>City</th>
+      <th>Temperature (°C)</th>
+      <th>Condition</th>
+    </tr>
+    <% for (let city in cache) { %>
+      <tr>
+        <td><%= city %></td>
+        <td><%= cache[city].temp %></td>
+        <td><%= cache[city].condition %></td>
+      </tr>
+    <% } %>
+  </table>
+</body>
+</html>

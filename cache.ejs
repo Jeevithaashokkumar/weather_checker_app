@@ -1,0 +1,19 @@
+<input id="k" placeholder="Key">
+<input id="v" placeholder="Value">
+<button onclick="saveCache()">Save</button>
+<button onclick="loadCache()">Load</button>
+
+<script>
+function saveCache() {
+  fetch("/cache/"+k.value, {
+    method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:"value="+v.value
+  }).then(()=>alert("Saved ✅"));
+}
+function loadCache() {
+  fetch("/cache/"+k.value)
+    .then(r=>r.json())
+    .then(d=>alert("Value: " + (d.value || d.error)));
+}
+</script>
